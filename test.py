@@ -101,4 +101,6 @@ with torch.no_grad():
         loss_dis = trainer.GAN_loss(realism_b, True).mean() + trainer.GAN_loss(realism_a_modif, False).mean()
         dis_loss.append(loss_dis)
         utils.save_image(clip_img(image_A_modif), opts.out_path + img_name.split('.')[0] + '_age_' + str(target_age) + '.jpg')
+    print(sum(predicted_age)/len(predicted_age))
+    print(sum(dis_loss)/ len(dis_loss))
 
